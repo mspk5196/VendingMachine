@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VendingMachine</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="body">
+
+    <header id="header">
+        <h2>Vending Machine</h2>
+        <div class="headDiv">
+            <div class="verticalLine"></div>
+            <h3 class="time" id="time"></h3>
+        </div>
+    </header>
+
+    <div id="cartDiv">
+        <div id="cartProducts">
+
+        </div>
+        <div id="amoundivetails">
+            <h3>Total Payable Amount: Rs.<span id="grossPrice"></span></h3>
+        </div>
+        <button id="addProducts" onclick="addProducts()">Add More Products</button>
+        <button id="payBtn" onclick="payBtn()">Pay</button>
+        <button id="cancelBtn" onclick="cancelBtn()">Cancel</button>
+    </div>
+    <div id="paymentArea">
+        <h2>Scan QR code to Pay</h2>
+
+        <img src="images/paymentQR.jpg" alt="paymentQR" id="paymentQR">
+
+        <p>Transaction ID: n5425djkfnjwn@$sb15dfbajdj</p>
+
+        <h3 style="color: green;">Transaction Amount: ₹<span id="pymtGrossAmt"></span></h3>
+
+        <h3>Time left : <h3 id="timeLeft" style="color: red;"></h3>
+
+            <button id="pymtFail" onclick="pymtFailed()">Payment Failed, Retry</button>
+
+            <p id="dispense" style="color: green; font-size: 17px;">Waiting to dispense...</p>
+
+            <button id="pymtCancelBtn" onclick="cancelBtn()">Cancel</button>
+
+            <button id="paid" onclick="paid(); this.disabled=true;">Paid</button>
+        </h3>
+    </div>
+    <div id="visibility">
+        <div id="cart">
+            <button id="cartNumber" onclick="showCartBtn()">Your Cart</button>
+        </div>
+        <div class="producdiviv">
+            <h3>Products</h3>
+
+            <div class="productCatlog">
+
+                <div class="coolDrinks" id="allProductDiv">
+
+                    <div id="CocoColaBig1L45">
+                        <img src="images/Drinks/cocoCola.jpeg" id="productImg" alt="Coco Cola Big 1L 45">
+                        <h4>Coco Cola Big 1L</h4>
+                        <p id="price" data-price="45">Rs.45/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div id="CocoColaSmall500ml30">
+                        <img src="images/Drinks/cocoColaSmall.jpg" id="productImg" alt="Coco Cola Small 500ml 30">
+                        <h4>Coco Cola Small 500ml</h4>
+                        <p id="price" data-price="30">Rs.30/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div id="CocoColaTin300ml40">
+                        <img src="images/Drinks/cocoColaTin.jpg" id="productImg" alt="Coco Cola Tin 300ml 40">
+                        <h4>Coco Cola Tin 300ml</h4>
+                        <p id="price" data-price="40">Rs.40/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div id="Pepsi1L50">
+                        <img src="images/Drinks/Pepsi.jpg" id="productImg" alt="Pepsi 1L 50">
+                        <h4>Pepsi 1L</h4>
+                        <p id="price" data-price="50">Rs.50/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div id="PepsiTin250ml35">
+                        <img src="images/Drinks/PepsiTin.jpg" id="productImg" alt="Pepsi Tin 250ml 35">
+                        <h4>Pepsi Tin 250ml</h4>
+                        <p id="price" data-price="35">Rs.35/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div id="Sprite1L45">
+                        <img src="images/Drinks/Sprite.jpg" id="productImg" alt="Sprite 1L 45">
+                        <h4>Sprite 1L</h4>
+                        <p id="price" data-price="45">Rs.45/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div id="SpriteSmall500ml34">
+                        <img src="images/Drinks/SpriteSmall.jpg" id="productImg" alt="Sprite Small 500ml 34">
+                        <h4>Sprite Small 500ml</h4>
+                        <p id="price" data-price="34">Rs.34/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div id="SpriteTin300ml32">
+                        <img src="images/Drinks/SpriteTin.jpg" id="productImg" alt="Sprite Tin 300ml 32">
+                        <h4>Sprite Tin 300ml</h4>
+                        <p id="price" data-price="32">Rs.32/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div id="SevenUp1L40">
+                        <img src="images/Drinks/sevenUp.jpg" id="productImg" alt="Seven Up 1L 40">
+                        <h4>Seven Up 1L</h4>
+                        <p id="price" data-price="40">Rs.40/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div id="Fanta500ml30">
+                        <img src="images/Drinks/fanta.jpg" id="productImg" alt="Fanta 500ml 30">
+                        <h4>Fanta 500ml</h4>
+                        <p id="price" data-price="30">Rs.30/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+                </div>
+
+
+                <div class="snacks" id="allProductDiv">
+
+                    <div>
+                        <img src="images/Snacks/lays1.jpg" id="productImg" alt="Lays Creame & Onion Flavour 10">
+                        <h4>Lays Creame & Onion Flavour</h4>
+                        <p id="price" data-price="10">Rs.10/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Snacks/lays2.jpg" id="productImg" alt="Lays Sizzlim Hot 10">
+                        <h4>Lays Sizzlim Hot</h4>
+                        <p id="price" data-price="10">Rs.10/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Snacks/dimondChips.png" id="productImg" alt="Yellow Diamond Classic Salted"
+                            id="productImg">
+                        <h4>Yellow Diamond Classic Salted</h4>
+                        <p id="price" data-price="15">Rs.15/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Snacks/fritos.jpg" id="productImg" alt="Fritos The Original Corn Chips 100">
+                        <h4>Fritos The Original Corn Chips</h4>
+                        <p id="price" data-price="10">Rs.100/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Snacks/bingo.jpg" id="productImg" alt="Bingo Original style Chilli 20">
+                        <h4>Bingo Original style Chilli</h4>
+                        <p id="price" data-price="20">Rs.20/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Snacks/bingo2.jpg" id="productImg" alt="Bingo Tedhe Medhe 20">
+                        <h4>Bingo Tedhe Medhe</h4>
+                        <p id="price" data-price="20">Rs.20/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Snacks/bingo3.jpeg" id="productImg" alt="Bingo Hashtag Spicy Masala 20">
+                        <h4>Bingo Hashtag Spicy Masala</h4>
+                        <p id="price" data-price="20">Rs.20/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Snacks/bingo4.png" id="productImg" alt="Bingo Mad Angles 20">
+                        <h4>Bingo Mad Angles</h4>
+                        <p id="price" data-price="20">Rs.20/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Snacks/tooYumm1.jpg" id="productImg" alt="Too Yumm Classic Salted 20"
+                            id="productImg">
+                        <h4>Too Yumm Classic Salted</h4>
+                        <p id="price" data-price="20">Rs.20/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Snacks/tooYumm2.png" id="productImg" alt="Too Yumm Rings 20">
+                        <h4>Too Yumm Rings</h4>
+                        <p id="price" data-price="20">Rs.20/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Snacks/townBus.jpg" id="productImg" alt="Town Bus Aloo Bhujia 10">
+                        <h4>Town Bus Aloo Bhujia</h4>
+                        <p id="price" data-price="10">Rs.10/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Snacks/smachos.jpeg" id="productImg" alt="Smachoz Makhana Masala 25">
+                        <h4>Smachoz Makhana Masala</h4>
+                        <p id="price" data-price="25">Rs.25/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Snacks/littleHearts.jpeg" id="productImg" alt="Little Hearts 30">
+                        <h4>Little Hearts</h4>
+                        <p id="price" data-price="30">Rs.30/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Snacks/saeMuruku.jpg" id="productImg" alt="SAE Andhra Muruku 10">
+                        <h4>SAE Andhra Muruku</h4>
+                        <p id="price" data-price="10">Rs.10/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Snacks/mahaCorn.jpeg" id="productImg" alt="Sofun Puff 20">
+                        <h4>Sofun Puff</h4>
+                        <p id="price" data-price="20">Rs.20/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+                </div>
+
+
+
+                <div class="Chocolates" id="allProductDiv">
+                    <div>
+                        <img src="images/Chocolates/dairyMilk_134g_95.jpg" id="productImg" alt="Dairy Milk 134g 95">
+                        <h4>Dairy Milk 134g</h4>
+                        <p id="price" data-price="95">Rs.95/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Chocolates/britanniaTreatWafer.png" id="productImg"
+                            alt="Britannia Treat Wafer 10">
+                        <h4>Britannia Treat Wafer</h4>
+                        <p id="price" data-price="10">Rs.10/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Chocolates/nabatiWafer.jpeg" id="productImg" alt="Nabati Wafer 20">
+                        <h4>Nabati Wafer</h4>
+                        <p id="price" data-price="20">Rs.20/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Chocolates/milkaWonderCake.png" id="productImg" alt="Milka Wonder Cake 20">
+                        <h4>Milka Wonder Cake</h4>
+                        <p id="price" data-price="20">Rs.20/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Chocolates/munchMax.jpg" id="productImg" alt="Munch Max 20">
+                        <h4>Munch Max</h4>
+                        <p id="price" data-price="20">Rs.20/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Chocolates/nestleClassic.jpeg" id="productImg" alt="Nestle Classic 20">
+                        <h4>Nestle Classic</h4>
+                        <p id="price" data-price="20">Rs.20/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Chocolates/parleMilano.png" id="productImg" alt="Parle Milano 10">
+                        <h4>Parle Milano</h4>
+                        <p id="price" data-price="10">Rs.10/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Chocolates/kitKat.jpeg" id="productImg" alt="Kit Kat 25">
+                        <h4>Kit Kat</h4>
+                        <p id="price" data-price="25">Rs.25/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Chocolates/eliteCookies.jpeg" id="productImg" alt="Elite Cookies 25">
+                        <h4>Elite Cookies</h4>
+                        <p id="price" data-price="25">Rs.25/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                    <div>
+                        <img src="images/Chocolates/milkBikis.jpeg" id="productImg" alt="Milk Bikis 35">
+                        <h4>Milk Bikis</h4>
+                        <p id="price" data-price="35">Rs.35/-</p>
+                        <button id="addCart" onclick="addCart(event); this.disabled=true;">Add to Cart</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="logic.js" defer></script>
+</body>
+
+</html>
