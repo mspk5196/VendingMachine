@@ -208,12 +208,12 @@ function pymtFailed() {
 function paid() {
     let dispenseText = document.getElementById("dispense");
 
-    timeLeft.style.color="green";
-    
+    timeLeft.style.color = "green";
+
 
     let pymtCancelBtn = document.getElementById("pymtCancelBtn");
     pymtCancelBtn.style.display = "block";
-    pymtCancelBtn.disabled=true;
+    pymtCancelBtn.disabled = true;
 
     dispenseText.textContent = "Dispensed your item, Thank You for your purchase.  The page will go to home after 10 Seconds."
     timeLeft.textContent = "00:10";

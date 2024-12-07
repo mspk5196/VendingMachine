@@ -1,86 +1,94 @@
-header{
-    /* position: static; */
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
-    background-color:peachpuff;
-    padding: 10px 0px 0px 10px; /* right top bottom left*/
+    background-color: peachpuff;
+    padding: 10px 0px 0px 10px;
 }
-header h2{
+
+header h2 {
     font-family: Arial, Helvetica, sans-serif;
 }
-.time{
+
+.time {
     text-align: left;
     width: 200px;
 }
-.verticalLine{
+
+.verticalLine {
     width: 4px;
     height: 65px;
     background-color: black;
     margin-right: 10px;
 }
-.headDiv{
+
+.headDiv {
     display: flex;
     position: relative;
     align-items: center;
 }
-/* .totDiv{
-    display: flex;
-    margin-top: 10px;
-    overflow-x: hidden;
-    border: 1px solid black;
-} */
-.productDiv{
+
+.productDiv {
     background-color: rgb(246, 246, 246);
     border-radius: 20px;
     width: 100%;
     margin-right: 4px;
 }
-h3{
+
+h3 {
     text-align: center;
     font-family: Helvetica, Arial, sans-serif;
-    
+
 }
-#productPrice div img{
+
+#productPrice div img {
     width: 50px;
     height: 60px;
 }
-#productPrice{
+
+#productPrice {
     margin-left: 20px;
     display: inline-block;
 }
-.productDiv{
+
+.productDiv {
     width: 100%;
 }
-.productCatlog div{
+
+.productCatlog div {
     display: flex;
     padding-left: 10px;
     padding-right: 10px;
 }
-#allProductDiv{
+
+#allProductDiv {
     overflow-x: auto;
 }
-#allProductDiv div{
+
+#allProductDiv div {
     text-align: center;
-    display: block;
-   }
-#addCartBtn{
+    display: grid;
+}
+
+#addCartBtn {
     background-color: rgb(18, 248, 18);
     border: none;
     border-radius: 5px;
     width: 25px;
     height: 30px;
     color: rgb(255, 255, 255);
-    
+
 }
-#addCartBtn:hover{
+
+#addCartBtn:hover {
     background-color: rgb(255, 255, 255);
     border: 2px solid rgb(18, 248, 18);
     color: rgb(0, 0, 0);
     cursor: pointer;
 }
-#numberItems{
+
+#numberItems {
     width: 30px;
     height: 20px;
     margin-left: 5px;
@@ -89,7 +97,8 @@ h3{
     text-align: center;
     border-radius: 5px;
 }
-#reduceItem{
+
+#reduceItem {
     background-color: rgb(18, 248, 18);
     border: none;
     border-radius: 5px;
@@ -98,42 +107,47 @@ h3{
     color: rgb(255, 255, 255);
     margin-right: 10px;
 }
-#reduceItem:hover{
+
+#reduceItem:hover {
     background-color: rgb(255, 255, 255);
     border: 2px solid rgb(18, 248, 18);
     color: rgb(0, 0, 0);
     cursor: pointer;
 }
-#cart{
+
+#cart {
     margin-top: 5px;
     display: flex;
 }
-#cartNumber{
-    background-color:rgb(18, 248, 18);
+
+#cartNumber {
+    background-color: rgb(18, 248, 18);
     border: none;
     height: 50px;
     width: 100px;
     color: white;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 15px;
     margin-right: auto;
     margin-left: auto;
     border-radius: 5px;
 }
-#cartNumber:hover{
+
+#cartNumber:hover {
     cursor: pointer;
     background-color: white;
     border: 2px solid rgb(18, 248, 18);
     color: black;
 }
-#cartNumber:active{
-    cursor:default;
+
+#cartNumber:active {
+    cursor: default;
     background-color: rgb(18, 248, 18);
     border: 2px solid black;
     color: white;
 }
 
-#cartDiv{
+#cartDiv {
     background-color: antiquewhite;
     border-radius: 10px;
     padding-top: 5px;
@@ -148,106 +162,119 @@ h3{
     margin-top: 20px;
     display: none;
 }
-#amountDetails{
+
+#amountDetails {
     margin-left: auto;
     margin-right: auto;
-    /* border:1px solid black; */
     width: max-content;
     text-align: left;
 }
-#payBtn{
-    background-color:rgb(18, 248, 18);
+
+#payBtn {
+    background-color: rgb(18, 248, 18);
     border: none;
     height: 60px;
     width: 100px;
     color: white;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 15px;
     margin-right: auto;
     margin-left: auto;
     border-radius: 5px;
 }
-#payBtn:hover{
+
+#payBtn:hover {
     cursor: pointer;
     background-color: white;
     border: 2px solid rgb(18, 248, 18);
     color: black;
 }
-#payBtn:active{
-    cursor:default;
+
+#payBtn:active {
+    cursor: default;
     background-color: rgb(18, 248, 18);
     border: 2px solid black;
     color: white;
 }
-#cancelBtn{
-    background-color:rgb(18, 248, 18);
+
+#cancelBtn {
+    background-color: rgb(18, 248, 18);
     border: none;
     height: 60px;
     width: 100px;
     color: white;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 15px;
     margin-right: auto;
     margin-left: auto;
     border-radius: 5px;
 }
-#cancelBtn:hover{
+
+#cancelBtn:hover {
     cursor: pointer;
     background-color: white;
     border: 2px solid rgb(18, 248, 18);
     color: black;
 }
-#cancelBtn:active{
-    cursor:default;
+
+#cancelBtn:active {
+    cursor: default;
     background-color: rgb(18, 248, 18);
     border: 2px solid black;
     color: white;
 }
-#cartProducts{
+
+#cartProducts {
     display: flex;
     flex-wrap: wrap;
     margin-right: 10px;
     margin-left: 10px;
 }
-#productImg{
+
+#productImg {
     width: 120px;
     height: 150px;
     margin-top: 10px;
     margin-right: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-#addCart{
-    background-color:rgb(18, 248, 18);
+
+#addCart {
+    background-color: rgb(18, 248, 18);
     border: none;
     height: 40px;
     width: 100px;
     color: white;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 15px;
     margin-right: auto;
     margin-left: auto;
     border-radius: 5px;
 }
-#addCart:hover{
+
+#addCart:hover {
     cursor: pointer;
     background-color: white;
     border: 2px solid rgb(18, 248, 18);
     color: black;
 }
-#addCart:active{
-    cursor:default;
+
+#addCart:active {
+    cursor: default;
     background-color: rgb(18, 248, 18);
     border: 2px solid black;
     color: white;
 }
-#addCart:disabled{
+
+#addCart:disabled {
     background-color: rgb(155, 155, 155);
     color: rgb(79, 79, 79);
     border: none;
-    cursor:no-drop;
+    cursor: no-drop;
 }
-#qtyInput{
-    background-color:white;
+
+#qtyInput {
+    background-color: white;
     border: 1px solid rgb(18, 248, 18);
     height: 25px;
     width: 30px;
@@ -258,8 +285,9 @@ h3{
     resize: none;
     border-radius: 5px;
 }
-#cartImg{
-    width:100px;
+
+#cartImg {
+    width: 100px;
     height: 150px;
     display: block;
     margin-left: auto;
@@ -267,8 +295,9 @@ h3{
     margin-bottom: 10px;
     margin-top: 10px;
 }
-#totPrice{
-    background-color:white;
+
+#totPrice {
+    background-color: white;
     border: 1px solid rgb(18, 248, 18);
     height: 25px;
     width: 35px;
@@ -278,36 +307,41 @@ h3{
     color: rgb(0, 0, 0);
     border-radius: 5px;
 }
-#cartItem{
+
+#cartItem {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
-#addProducts{
-    background-color:rgb(18, 248, 18);
+
+#addProducts {
+    background-color: rgb(18, 248, 18);
     border: none;
     height: 60px;
     width: 150px;
     color: white;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 15px;
     margin-right: auto;
     margin-left: auto;
     border-radius: 5px;
 }
-#addProducts:hover{
+
+#addProducts:hover {
     cursor: pointer;
     background-color: white;
     border: 2px solid rgb(18, 248, 18);
     color: black;
 }
-#addProducts:active{
-    cursor:default;
+
+#addProducts:active {
+    cursor: default;
     background-color: rgb(18, 248, 18);
     border: 2px solid black;
     color: white;
 }
-#paymentArea{
+
+#paymentArea {
     background-color: blanchedalmond;
     border-radius: 15px;
     text-align: center;
@@ -318,94 +352,106 @@ h3{
     width: 300px;
     display: none;
 }
-#paymentQR{
+
+#paymentQR {
     width: 200px;
     height: 200px;
 }
-#pymtFail{
-    background-color:rgb(18, 248, 145);
+
+#pymtFail {
+    background-color: rgb(18, 248, 145);
     border: none;
     height: 40px;
     width: 130px;
     color: rgb(255, 0, 0);
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 15px;
     margin-right: auto;
     margin-left: auto;
     border-radius: 5px;
     display: none;
 }
-#pymtFail:hover{
+
+#pymtFail:hover {
     cursor: pointer;
     background-color: white;
     border: 2px solid rgb(18, 248, 18);
     color: black;
 }
-#pymtFail:active{
-    cursor:default;
+
+#pymtFail:active {
+    cursor: default;
     background-color: rgb(18, 248, 18);
     border: 2px solid black;
     color: white;
 }
-#pymtCancelBtn{
-    background-color:rgb(18, 248, 18);
+
+#pymtCancelBtn {
+    background-color: rgb(18, 248, 18);
     border: none;
     height: 40px;
     width: 100px;
     color: white;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 15px;
     margin-right: auto;
     margin-left: auto;
     margin-top: 10px;
     border-radius: 5px;
 }
-#pymtCancelBtn:hover{
+
+#pymtCancelBtn:hover {
     cursor: pointer;
     background-color: white;
     border: 2px solid rgb(18, 248, 18);
     color: black;
 }
-#pymtCancelBtn:active{
-    cursor:default;
+
+#pymtCancelBtn:active {
+    cursor: default;
     background-color: rgb(18, 248, 18);
     border: 2px solid black;
     color: white;
 }
-#pymtCancelBtn:disabled{
+
+#pymtCancelBtn:disabled {
     background-color: rgb(155, 155, 155);
     color: rgb(79, 79, 79);
     border: none;
-    cursor:no-drop;
+    cursor: no-drop;
 }
-#paid{
-    background-color:rgb(18, 248, 18);
+
+#paid {
+    background-color: rgb(18, 248, 18);
     border: none;
     height: 40px;
     width: 100px;
     color: white;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 15px;
     margin-right: auto;
     margin-left: auto;
     border-radius: 5px;
 }
-#paid:hover{
+
+#paid:hover {
     cursor: pointer;
     background-color: white;
     border: 2px solid rgb(18, 248, 18);
     color: black;
 }
-#paid:active{
-    cursor:default;
+
+#paid:active {
+    cursor: default;
     background-color: rgb(18, 248, 18);
     border: 2px solid black;
     color: white;
 }
-#paid:disabled{
+
+#paid:disabled {
     background-color: rgb(155, 155, 155);
     color: rgb(79, 79, 79);
     border: none;
     margin-top: 8px;
-    cursor:no-drop;
+    cursor: no-drop;
 }
