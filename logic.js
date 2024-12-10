@@ -202,6 +202,10 @@ let inputDiscount = document.getElementById("inputDiscount");
 
 let discountPayBtn = document.getElementById("discountPay");
 
+let discountSubmit = document.getElementById("discountSubmit");
+
+let discountEdit = document.getElementById("discountEdit");
+
 function disctCalculate() {
 
     console.log(inputDiscount.value);
@@ -217,6 +221,9 @@ function disctCalculate() {
         // discountPayBtn.textContent = "Pay";
 
         disctStatus.textContent = "ELIGIBLE";
+
+        discountSubmit.disabled = false;
+        discountEdit.disabled   = false;
 
         if (inputDiscount.value == "PURCHASE20") {
 
@@ -264,9 +271,8 @@ function disctCalculate() {
 
         disctStatus.textContent = "NOT ELIGIBLE";
 
-        let discountSubmit = document.getElementById("discountSubmit");
+        
         discountSubmit.disabled = true;
-        let discountEdit = document.getElementById("discountEdit");
         discountEdit.disabled = true;
     }
 
