@@ -23,7 +23,8 @@
         <div id="cartProducts">
 
         </div>
-        <div id="amoundivetails">
+        <div id="amountDivdetails">
+            <h3>Total Quantity(All Items): <span id="totQtyText"></span></h3>
             <h3>Total Payable Amount: Rs.<span id="grossPrice"></span></h3>
         </div>
         <button id="addProducts" onclick="addProducts()">Add More Products</button>
@@ -37,7 +38,9 @@
 
         <p>Transaction ID: n5425djkfnjwn@$sb15dfbajdj</p>
 
-        <h3 style="color: green;">Transaction Amount: ₹<span id="pymtGrossAmt"></span></h3>
+        <h3 style="color: green;">Total Number of Items: <span id="pymtTotItems"></span></h3>
+
+        <h3 style="color: green;">Transaction Amount(applied discount): ₹<span id="disctAmtText"></span></h3>
 
         <h3>Time left : <h3 id="timeLeft" style="color: red;"></h3>
 
@@ -49,6 +52,31 @@
 
             <button id="paid" onclick="paid(); this.disabled=true;">Paid</button>
         </h3>
+    </div>
+    <div id="discountArea">
+        <h2>If you have any discount code please enter it below 👇</h2>
+
+        <input type="text" name="discountCode" id="inputDiscount" placeholder="DISCOUNT CODE HERE">
+
+        <button id="discountSubmit" onclick="disctSmtBtn()">Submit</button>
+        <button id="discountEdit" onclick="disctEdtBtn()">Edit</button>
+
+        <div id="disctDetailsDiv" style="display: none;">
+            <h3 id="disctGrossAmtText">Total Amount before applying discount: Rs. <span id="pymtGrossAmt"></span></h3>
+
+            <p style="color: blue; font-size: 20px;" id="disctPercentText">You got <span id="disctPercent" style="color: red;"></span> discount.</p>
+    
+            <h3 style="color: green;" id="disctAmtHead">Transaction Amount(applied discount): ₹<span id="disctAmtTextinDisct"></span></h3>
+    
+        </div>
+        
+        <h4 style="color: red;">If you don't have discount code leave empty and submit.</h4>
+
+        <h3 style="color: blue;">You are <span id="disctStatus" style="color:red; text-decoration: underline;"></span> for discount, Purchasing above ₹100 will get discount.</h3>
+        
+        <button id="addProductsDisct" onclick="addProducts()">Add More Products</button>
+
+        <button id="discountPay" onclick="disctPayBtn()">Pay without discount</button>
     </div>
     <div id="visibility">
         <div id="cart">
@@ -328,3 +356,5 @@
 </body>
 
 </html>
+
+<!-- <h5>Stock Left : <span id="stockLeft">20</span></h5> -->

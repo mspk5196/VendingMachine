@@ -13,21 +13,21 @@ let numberItems = document.getElementById("numberItems");
 let cartNumber = document.getElementById("cartNumber");
 let addCartBtn = document.getElementById("addCart");
 
-let addToCart = document.createElement('button');
-addToCart.id = "addCartBtn";
-addToCart.textContent = "+";
-addToCart.onclick = "addItemCart(event)";
+// let addToCart = document.createElement('button');
+// addToCart.id = "addCartBtn";
+// addToCart.textContent = "+";
+// addToCart.onclick = "addItemCart(event)";
 
-let reduceItem = document.createElement('button');
-reduceItem.id = "reduceItem";
-reduceItem.textContent = "-";
-reduceItem.onclick = "reduceCartItem(event)";
+// let reduceItem = document.createElement('button');
+// reduceItem.id = "reduceItem";
+// reduceItem.textContent = "-";
+// reduceItem.onclick = "reduceCartItem(event)";
 
 function addItemCart(event) {
     let numberItem = event.target.nextElementSibling;
     let currentValue = parseInt(numberItem.value) || 0;
     let newValue;
-    if (numberItem.value >= 0 && numberItem.value <= 20) {
+    if (numberItem.value >= 0 && numberItem.value <= 19) {
         newValue = currentValue + 1;
         numberItem.value = newValue;
     } else {
@@ -42,10 +42,11 @@ function reduceCartItem(event) {
         let newValue = currentValue - 1;
         numberItem.value = newValue;
     }
-    if (numberItem.value == 0) {
-        let cartItems = document.getElementById("cartItem");
-        cartItems.style.display = "none";
-    }
+    // grossTotal();
+    // if (numberItem.value == 0) {
+    //     let cartItems = document.getElementById("cartItem");
+    //     cartItems.style.display = "none";
+    // }
     grossTotal();
 }
 
@@ -77,7 +78,7 @@ function addCart(event) {
 
     let priceDisplay = `<h4 data-price="${productPrice}">Price(per Item): Rs. ${productPrice}</h4>`;
 
-    cartItem.innerHTML = productImage + productName + priceDisplay + "<p>Quantity: </p>" + "<button id='addCartBtn' onclick='addItemCart(event)'>+</button>" + quantityInput.outerHTML + "<button id='reduceItem' onclick='reduceCartItem(event)'>-</button>";
+    cartItem.innerHTML = productImage + productName + priceDisplay + "<p>Quantity: </p>" + "<button id='addCartBtn' onclick='addItemCart(event); stockQtyLeft(event);'>+</button>" + quantityInput.outerHTML + "<button id='reduceItem' onclick='reduceCartItem(event); stockQtyLeft(event);'>-</button>" + "<h5 id='stockLeftText'>Stock Left : <span id='stockLeft'>19</span></h5>";
 
     cartProducts.appendChild(cartItem);
 
@@ -85,19 +86,44 @@ function addCart(event) {
     grossTotal();
 }
 
+function stockQtyLeft() {
+    for (let cartItem of cartProducts.children) {
+
+        // console.log(stockLeft);
+
+        let quantityInput = cartItem.querySelector("#qtyInput");
+        let stockLeft = cartItem.querySelector("#stockLeft");
+        stockLeft.value = '20';
+        let numStkLeft = parseInt(stockLeft.value) || 0;
+
+        stockLeft.innerHTML = numStkLeft - quantityInput.value;
+    }
+
+}
+
 let grossPriceText = document.getElementById("grossPrice");
 let pymtPriceText = document.getElementById("pymtGrossAmt");
+let totQtyText = document.getElementById("totQtyText");
+let pymtTotItems = document.getElementById("pymtTotItems");
+let totalCost;
+let totQty;
 function grossTotal() {
-    let totalCost = 0;
 
+    totalCost = 0;
+    totQty = 0;
     for (let cartItem of cartProducts.children) {
         let quantityInput = cartItem.querySelector("#qtyInput");
         let productPrice = parseFloat(cartItem.querySelector('h4').dataset.price);
+
         totalCost += quantityInput.value * productPrice;
         console.log(productPrice);
+
+        totQty += parseInt(quantityInput.value);
+        console.log(totQty);
     }
 
-
+    totQtyText.textContent = `${totQty}`;
+    pymtTotItems.textContent = `${totQty}`
     grossPriceText.textContent = `${totalCost.toFixed(2)}`;
     pymtPriceText.textContent = `${totalCost.toFixed(2)}`;
 }
@@ -131,22 +157,184 @@ function cancelBtn() {
 function addProducts() {
     let cartDiv = document.getElementById("cartDiv");
     let totDiv = document.getElementById("visibility");
+    let discountArea = document.getElementById("discountArea");
     totDiv.style.display = "block";
     body.style.backgroundColor = "white";
     header.style.backgroundColor = "aquamarine"
     cartDiv.style.display = "none";
+    discountArea.style.display = "none";
+
+    disctCalculate();
 }
 let timeLeft = document.getElementById("timeLeft");
-function payBtn() {
 
+function payBtn() {
+    console.log(totalCost);
+
+    if (totalCost === 0) {
+        alert("Please add some product.");
+        location.reload();
+    }
+    else {
+        let cartDiv = document.getElementById("cartDiv");
+        let totDiv = document.getElementById("visibility");
+        let paymentArea = document.getElementById("paymentArea");
+        let discountArea = document.getElementById("discountArea");
+        totDiv.style.display = "none";
+        body.style.backgroundColor = "white";
+        header.style.backgroundColor = "aquamarine"
+        cartDiv.style.display = "none";
+        paymentArea.style.display = "none";
+        disctCalculate();
+        discountArea.style.display = "block";
+    }
+}
+
+let disctAmtText = document.getElementById("disctAmtText");
+
+let disctAmtTextinDisct = document.getElementById("disctAmtTextinDisct");
+
+let disctPercent = document.getElementById("disctPercent");
+
+let disctStatus = document.getElementById("disctStatus");
+
+let inputDiscount = document.getElementById("inputDiscount");
+
+let discountPayBtn = document.getElementById("discountPay");
+
+function disctCalculate() {
+
+    console.log(inputDiscount.value);
+
+    console.log(totalCost);
+
+    if (totalCost > "100.00") {
+
+        alert("YOUR DISCOUNT CODE IS 'PURCHASE20'(Case Sensitive)");
+
+        inputDiscount.disabled = false;
+
+        // discountPayBtn.textContent = "Pay";
+
+        disctStatus.textContent = "ELIGIBLE";
+
+        if (inputDiscount.value == "PURCHASE20") {
+
+            let disctAmt = totalCost - (totalCost * (0.2));
+            console.log(disctAmt);
+
+            disctPercent.textContent = "20%";
+
+            disctAmtText.textContent = `${disctAmt.toFixed(2)}`;
+            disctAmtTextinDisct.textContent = `${disctAmt.toFixed(2)}`;
+
+
+            // pymtArea();
+        }
+        else if (inputDiscount.value == "") {
+
+            pymtPriceText.textContent = `${totalCost.toFixed(2)}`;
+
+            disctAmtText.textContent = `${totalCost.toFixed(2)}`;
+            disctAmtTextinDisct.textContent = `${totalCost.toFixed(2)}`;
+
+            disctPercent.textContent = "0%(No discount applied)";
+
+            // pymtArea();
+        }
+        else {
+            alert("Invalid Discount Code");
+
+            disctPercent.textContent = "0%(No discount applied)";
+
+            inputDiscount.value = "";
+        }
+    }
+    else {
+        inputDiscount.disabled = true;
+
+        pymtPriceText.textContent = `${totalCost.toFixed(2)}`;
+
+        disctAmtText.textContent = `${totalCost.toFixed(2)}`;
+        disctAmtTextinDisct.textContent = `${totalCost.toFixed(2)}`;
+
+        disctPercent.textContent = "0%(No discount applied)";
+
+        discountPayBtn.textContent = "Pay without discount";
+
+        disctStatus.textContent = "NOT ELIGIBLE";
+
+        let discountSubmit = document.getElementById("discountSubmit");
+        discountSubmit.disabled = true;
+        let discountEdit = document.getElementById("discountEdit");
+        discountEdit.disabled = true;
+    }
+
+}
+
+function disctPayBtn() {
+
+    if (!(inputDiscount.value == "PURCHASE20")) {
+
+        if (inputDiscount.value == "") {
+            disctCalculate();
+            pymtArea();
+        }
+        else {
+            inputDiscount.value = "";
+
+            alert("Invalid Discount Code");
+        }
+
+    }
+    else {
+        pymtArea();
+    }
+
+}
+
+function disctSmtBtn() {
+
+    disctCalculate();
+
+    console.log(disctAmtText);
+
+    let disctDetailsDiv = document.getElementById("disctDetailsDiv");
+
+    if (inputDiscount.value == "PURCHASE20") {
+        disctDetailsDiv.style.display = "block";
+
+        inputDiscount.disabled = true;
+
+        discountPayBtn.textContent = "Pay";
+    }
+    else {
+        alert("Enter correct discount and submit");
+        inputDiscount.value = "";
+    }
+
+}
+
+function disctEdtBtn() {
+    if (inputDiscount.disabled == true) {
+        inputDiscount.disabled = false;
+    }
+    else {
+        alert("There is nothing to edit.");
+    }
+}
+
+function pymtArea() {
     let cartDiv = document.getElementById("cartDiv");
     let totDiv = document.getElementById("visibility");
     let paymentArea = document.getElementById("paymentArea");
+    let discountArea = document.getElementById("discountArea");
     totDiv.style.display = "none";
     body.style.backgroundColor = "white";
     header.style.backgroundColor = "aquamarine"
     cartDiv.style.display = "none";
     paymentArea.style.display = "block";
+    discountArea.style.display = "none";
 
     timeLeft.innerHTML = "05" + ":" + "00";
     startTimer();
@@ -192,7 +380,6 @@ function payBtn() {
         return sec;
     }
 }
-
 function pymtFailed() {
     payBtn();
     let pymtFailBtn = document.getElementById("pymtFail");
